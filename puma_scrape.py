@@ -1,14 +1,7 @@
 """
 Author: Jack Skrainka
 PUMA scraper output table PUMA_BRONZE
-    This is in reference to a medallion architecture
-    It's always important to maintain the raw_data for complete visibility
-    My next step would be to refine PUMA_BRONZE to PUMA_SILVER which would remove unnecessary columns that exist from
-    the raw data
-    The final output: PUMA_GOLD would only contain the requested columns by performing transformations in SQL
-        I would need to clarify the consumer is looking for sum of quantities per state and year
-            (ex: Alabama in 2019 would only be a single row with the pertinent quantities summed)
-            This would involve significant data transformation that shouldn't be done in a single table/iteration
+
 """
 
 import requests
@@ -19,7 +12,7 @@ import os
 
 from pprint import pprint
 
-# define important vars
+# define source urls of interest
 engiGraduationsByPuma = 'https://datausa.io/api/data?CIP=14&drilldowns=PUMA&measure=Completions'
 uniGraduationsByPuma = 'https://datausa.io/api/data?measures=Completions&drilldowns=PUMA,University'
 popMetricsByPuma = 'https://datausa.io/api/data?measure=ygcpop%20RCA,Total%20Population,Total%20Population%20'
